@@ -50,23 +50,19 @@ if image != ' ' :
         'certainly', 'might', 'came'])
 
         dataset1 = " ".join([word for word in dataset1.split(' ') if word not in stopwords])
-    
+    # Remove the punctuations
     dataset1 = re.sub(r'[^\w\s]','', dataset1)
 
 tab1, tab2, tab3 = st.tabs(['Word Cloud','Bar Chart','View Text'])    
 
 with tab1 :
     # st.write(string.punctuation)
-    if image != ' ':
-        # Remove punctuation & stopwords 
-        # st.write(stopwords)
-        # if stopwords is not None:
-        #     dataset1 = " ".join([word for word in dataset1.split() if word not in stopwords])
-        #     dataset1 = re.sub(r'[^\w\s]','', dataset1)           
+    if image != ' ':               
         
         cloud = WordCloud(background_color = "white", 
                             max_words = max_word, 
-                            max_font_size=max_font, 
+                            max_font_size=max_font,
+                            collocations=False ,
                             # stopwords = stopwords,                             
                             random_state=random)
         wc = cloud.generate(dataset1)
@@ -80,7 +76,7 @@ with tab2:
         
         # this will return the dictionary of the word and their frequency count
         data_dict = cloud.process_text(dataset1)
-
+        
         # Sort the data in descending order based on the count value (value part of the dictionary)
         word_freq={k: v for k, v in sorted(data_dict.items(), reverse=True, key=lambda value: value[1])}    
                
@@ -120,5 +116,6 @@ with tab2:
 
 with tab3:
     if image != ' ':
+        # Writing the text of the file
         st.write(dataset)         
 
