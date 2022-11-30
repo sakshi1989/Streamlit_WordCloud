@@ -90,7 +90,7 @@ with tab2:
 
         # Get the maximum count of the word
         max_count = df_freq['Word_Count'].max()
-        # the height of the bar should increase as the max_word increases
+        # the color gradient will decrease as the count of the word decreases
         scale = alt.Scale(
             domain=[min_word, max_count],            
             scheme='blues',
