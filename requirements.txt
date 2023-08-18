@@ -38,7 +38,7 @@ packaging==21.3
 pandas==1.5.1
 parso==0.8.3
 pickleshare==0.7.5
-Pillow==9.2.0
+pillow>=9.3.0
 plotly==5.11.0
 prompt-toolkit==3.0.31
 protobuf==3.20.3
